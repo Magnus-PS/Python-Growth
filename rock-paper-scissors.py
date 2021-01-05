@@ -34,36 +34,51 @@ else:
 
 import random #since we use randint()
 
-c = random.randint(0,2)
+human_w = 0
+comp_w = 0
 
-if c == 0:
-    comp = "rock"
-elif c == 1:
-    comp = "scissors"
-else:
-    comp = "paper"
+print("The first player to 2 wins, wins the game :)")
 
-human = str(input("Human ... enter your hand: \n")).lower()
+while human_w < 2 and comp_w < 2:
 
-print("Rock, paper, scissors ... shoot!")
+    c = random.randint(0,2)
 
-if human == comp:
-    print("You chose the same. It's a draw.")
-elif human == "rock": 
-    if comp == "scissors":
-        print("Rock beats scissors. Humanity wins.")
-    elif comp == "paper":
-        print("Paper beats rock. AI wins.")
-elif human == "scissors":
-    if comp == "paper":
-        print("Scissors beats paper. Humanity wins.")
-    elif comp == "rock":
-        print("Rock beats scissors. AI wins")
-elif human == "paper":
-    if comp == "rock":
-        print("Paper beats rock. Humanity wins.")
-    elif comp == "scissors":
-        print("Scissors beats paper. AI wins.")
-else:
-    print("Please enter 'rock', 'paper', or 'scissors'!!!")
+    if c == 0:
+        comp = "rock"
+    elif c == 1:
+        comp = "scissors"
+    else:
+        comp = "paper"
+
+    human = str(input("Human ... enter your hand: \n")).lower()
+
+    print("Rock, paper, scissors ... shoot!")
+
+    if human == comp:
+        print("You chose the same. It's a draw.")
+    elif human == "rock": 
+        if comp == "scissors":
+            print("Rock beats scissors. Humanity wins.")
+            human_w += 1
+        elif comp == "paper":
+            print("Paper beats rock. AI wins.")
+            comp_w += 1
+    elif human == "scissors":
+        if comp == "paper":
+            print("Scissors beats paper. Humanity wins.")
+            human_w += 1
+        elif comp == "rock":
+            print("Rock beats scissors. AI wins")
+            comp_w += 1
+    elif human == "paper":
+        if comp == "rock":
+            print("Paper beats rock. Humanity wins.")
+            human_w += 1
+        elif comp == "scissors":
+            print("Scissors beats paper. AI wins.")
+            comp_w += 1
+    else:
+        print("Please enter 'rock', 'paper', or 'scissors'!!!") 
+    
+    print("Scoreboard ... humanity: {}, AI: {}".format(human_w,comp_w))
 
