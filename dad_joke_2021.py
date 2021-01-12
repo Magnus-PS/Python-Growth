@@ -1,5 +1,4 @@
-import requests
-import pyfiglet
+import requests, pyfiglet, random
 from termcolor import colored
  
 #ask user for message and output color
@@ -27,7 +26,8 @@ response_j = requests.get(
 data = response_j.json()
 num = len(data['results'])
 if num == 0:
-    print("Sorry ... there aren't any jokes on that topic.")
+    print(f"Sorry ... there aren't any jokes about {topic}. Please try again.")
 else:
+    index = random.randint(0,num-1)
     print(f"I've got {num} jokes about {topic}, here's one:")
-    print(data['results'][0]['joke'])
+    print(data['results'][index]['joke'])
